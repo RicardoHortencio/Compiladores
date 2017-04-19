@@ -37,16 +37,34 @@ class Main {
 						case DecafLexer.CHAR:
 		        				type = " CHARLITERAL";
 		        				break;
+						case DecafLexer.HEXLITERAL:
+							type = " INTLITERAL";
+							break;
+						case DecafLexer.NUMBER:
+							type = " INTLITERAL";
+							break;
+						case DecafLexer.OPERADOR:
+							type = "";
+							break;
+						case DecafLexer.STRING:
+							type = " STRINGLITERAL";
+							break;
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
 		        		}
 		        		done = true;
         			} catch(Exception e) {
+
         	        	// print the error:
         	            System.out.println(CLI.infile+" "+e);
         	            lexer.skip();
-        	        }
+        	        } 
+
+				
+
+
         		}
+
         	}
         	else if (CLI.target == CLI.PARSE || CLI.target == CLI.DEFAULT)
         	{
