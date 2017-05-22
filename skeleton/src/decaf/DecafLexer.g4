@@ -11,36 +11,86 @@ options
 
 tokens
 {
+   
   TK_class
-}
 
-LCURLY : '{';
-RCURLY : '}';
+ }
 
-SIMBOLOS: ',' | '[' | ']' | '||' | '(' | ')' | ';' | '\'' ;
+ TK_CLASS: 'class Programa';
 
-BOOLEANLITERAL:  'false' | 'true' ;
+ LCURLY : '{';       RCURLY : '}'; 
 
-RESERVWORD : 'boolean' | 'break' | 'callout' | 'class'| 'continue' | 'else' | 'for' | 'int' | 'return' | 'void' | 'if' ;
+ PL: '(';            PR: ')';
 
-ID  :   ('a'..'z' | 'A'..'Z'|'_') ('a'..'z' | 'A'..'Z'|'_' | '0'..'9')*;
+ VIRGULA:  ',';
 
-WS_ : (' ' | '\n' |'\t' ) -> skip;    // tratando caracter em si 
+ CL: '[';
+ CR: ']';  
 
-SL_COMMENT : '//' (~'\n')* '\n' -> skip;
+ VOID: 'void'; 
 
-CHAR : '\'' (ESC|~'\'') '\'';
+ SYMBOLS: (VIRGULA) | '[' | ']' | '||' | '(' | ')' | (PONT_V) | '\'' ; 
 
-STRING : '"'(ESC|~('"' | '\''))* '"';
+ PONT_V: ';' ;
 
-HEXLITERAL: '0x' [0-9a-fA-F]+;
+ BOOL_LITERAL: 'false' | 'true';
 
-NUMBER: ('0'..'9')+;
+ FOR: 'for';  RETURN: 'return';  CONTINUE: 'continue';  IF: 'if'; ELSE: 'else'; BREAK: 'break'; CALLOUT: 'callout';
 
-OPERADOR: ('-'| '+' | '*'| '/' | '<' | '>' | '<=' | '>='| '&&' | '!=' | '==' | '=');
+ BIN_OP:  (ARITH_OP) | (REL_OP) | (EQ_OP) | (COND_OP) ;
 
-fragment
-ESC :  '\\' ('n'|'\"'|'\\'|'t' | '\'');
+ RESERVWORD : (TYPES) | (BREAK) | CALLOUT | 'class'| (CONTINUE) | (ELSE) | (FOR) | (RETURN) | (IF) | (VOID) ;
+
+
+ ARITH_OP:  (SMENOS) | (SMENOS) | '*' | '/' | '%' | '<<' | '>>' | '>>>' | (ASSING_OP) ;
+
+ SMENOS: '-'; SMAIS: '+';
+
+ SAFIRMA: '!';
+
+ REL_OP: '<' | '>' | '<=' | '>=';
+
+ ASSING_OP: (IGUAL_OP) | '+='| '-=';
+
+ IGUAL_OP: '=';
+
+ EQ_OP:  '==' | '!=' ;
+
+ COND_OP : '&&' | '||'  ;
+ 
+ WS_ : (' ' | '\n' |'\t' ) -> skip;    // tratando caracter em si
+
+ ID: ('a'..'z' | 'A'..'Z'|'_') ('a'..'z' | 'A'..'Z'|'_' | '0'..'9')* ; 
+
+ SL_COMMENT : '//' (~'\n')* '\n' -> skip;
+
+ ALPHA_NUM: (ALPHA) (DIGIT);
+
+ ALPHA: ('a'..'z' | 'A'..'Z'|'_') ('a'..'z' | 'A'..'Z'|'_')*;
+
+ HEX_DIGIT: '0x' [0-9a-fA-F]+;
+ 
+ DIGIT:  ('0'..'9')+; 
+
+ TYPES: 'boolean' | 'int' ;
+
+ INT_LITERAL: (DECIMAL_LITERAL)| (HEX_LITERAL);
+ 
+ DECIMAL_LITERAL: (DIGIT) (DIGIT)* ;
+ 
+ HEX_LITERAL: '0x' (HEX_DIGIT) (HEX_DIGIT)* ;
+  
+ CHAR_LITERAL: '\'' (ESC|~'\'') '\'';
+ 
+ STRING_LITERAL: '"'(ESC|~('"' | '\''))* '"'; 
+ 
+ CHAR: '\'' (ESC|~'\'') '\'';  	
+ 
+ fragment
+ ESC :  '\\' ('n'|'\"'|'\\'|'t' | '\'');
+
+
+
 
 
 

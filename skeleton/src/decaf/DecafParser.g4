@@ -1,65 +1,74 @@
-parser grammar DecafParser;
+ parser grammar DecafParser;
 
-@header {
-package decaf;
-}
+  @header {
+  package decaf;
+ }
 
-options
-{
+ options
+ {
+
   language=Java;
   tokenVocab=DecafLexer;
 
 	
-}
+ }		
+
+ program:  TK_CLASS LCURLY (field_decl)* (method_decl)* RCURLY EOF ;   
+
+ method_decl:       (type | VOID)  ID PL (( PR block ) | (type ID ( VIRGULA type ID)* PR block ));
+		  
+ field_decl:        ( (ID (VIRGULA ID) ) | ( ID CL INT_LITERAL CR (VIRGULA ID CL INT_LITERAL CR ) ))* ;
+
+ block:             LCURLY (var_decl)+ (statement)+ RCURLY ;
+
+ var_decl:          type (ID (VIRGULA ID))* ;
+	
+ type:           TYPES ;
+
+
+ statement:        location ASSING_OP expr 
 		
+ 		|  method_call 
 
-program:  Class Program '{' (field_decl)* (method_decl)* '}' EOF;
-
-
-field_decl:         (type) ('{' (id) | (id) '[' (int_literal) ']' '}')+ ','  ';' ;
-
-method_decl:      '{' (type) | (void) '}' (id) '('  '[' ('{' (type) (id) '}')+ ',' ']' ')' (block) ;
-
-block:            '{' (var_decl)* (statement)* '}' ;
-
-var_decl:          'int' | 'boolean' ;
-
-statement:        (location) (assign_op) (expr) ';'
-		| (method_call) ';'
-
-		| 'if' '(' (exp) ')' (block) '[' 'else' (block) ']'
+		|  IF PL expr PR block CL ELSE block CR
 		
-		| 'for' (id) '=' (expr) ',' (expr) (block)
+		| FOR  PL ID IGUAL_OP expr PONT_V  expr PONT_V block PR
 	
-		| 'return' '[' (expr) ']' ';'
+		| RETURN CL expr CR 
 
-		| 'continue' ';'
+		| BREAK
+
+		| CONTINUE 
 	
-		| (block) ;
+		| block ;
 	
 
-assign_op:	  '='
-		| '+='
-	
-		| '-=' ;
 
-method_call:      (method_name) '(' '['(expr)+ ',' ']' ')' 
-		| (callout) '(' (string_literal) '[' (callout_arg)+ ',' ']' ')' ;
+ method_call:     method_name  PL (  (PR)  | ( (expr ( VIRGULA expr) )* PR )
 
-location: 	  (id)
+		| CALLOUT PL STRING_LITERAL ( (PR) | (( VIRGULA (callout_arg (VIRGULA callout_arg) )* )PR) ) ;
 
-		| (id) '[' (expr) ']' ;
 
-expr: 		  (location)
-		| (method_call)
-		| (literal)
-		| '-'(expr)
-		| '!'(expr)
-		| '(' (expr) ')' ;
+ method_name: 	  ID ;
 
-callout_arg: (expr) | (string_literal) ;
 
-bin_op: (arith_op) | (rel_op) | (eq_op) | (cond_op) ;
+ location: 	   ID 
+
+		|  ID CL expr CR ;
+
+
+ expr: 		    location
+		|   method_call
+		|   literal
+                |   expr BIN_OP expr
+		|   SMENOS  expr
+		|   SAFIRMA expr
+		|  PL expr PR ;
+
+ callout_arg: expr | STRING_LITERAL ;
+
+ 
+ literal: ID ;
 
 
 
