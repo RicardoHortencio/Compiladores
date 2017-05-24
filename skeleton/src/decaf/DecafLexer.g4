@@ -16,7 +16,6 @@ tokens
 
  }
 
- TK_CLASS: 'class Programa';
 
  LCURLY : '{';       RCURLY : '}'; 
 
@@ -35,14 +34,16 @@ tokens
 
  BOOL_LITERAL: 'false' | 'true';
 
+ CLASS: 'class';   PROGRAM: 'program';
+
  FOR: 'for';  RETURN: 'return';  CONTINUE: 'continue';  IF: 'if'; ELSE: 'else'; BREAK: 'break'; CALLOUT: 'callout';
 
  BIN_OP:  (ARITH_OP) | (REL_OP) | (EQ_OP) | (COND_OP) ;
 
- RESERVWORD : (TYPES) | (BREAK) | CALLOUT | 'class'| (CONTINUE) | (ELSE) | (FOR) | (RETURN) | (IF) | (VOID) ;
+ RESERVWORD : (TYPE) | (BREAK) | CALLOUT | 'class'| (CONTINUE) | (ELSE) | (FOR) | (RETURN) | (IF) | (VOID) ;
 
 
- ARITH_OP:  (SMENOS) | (SMENOS) | '*' | '/' | '%' | '<<' | '>>' | '>>>' | (ASSING_OP) ;
+ ARITH_OP:  (SMENOS) | (SMAIS) | '*' | '/' | '%' | '<<' | '>>' | '>>>' | (ASSING_OP) ;
 
  SMENOS: '-'; SMAIS: '+';
 
@@ -72,7 +73,7 @@ tokens
  
  DIGIT:  ('0'..'9')+; 
 
- TYPES: 'boolean' | 'int' ;
+ TYPE: 'boolean' | 'int' ;
 
  INT_LITERAL: (DECIMAL_LITERAL)| (HEX_LITERAL);
  

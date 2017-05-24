@@ -13,19 +13,17 @@
 	
  }		
 
- program:  TK_CLASS LCURLY (field_decl)* (method_decl)* RCURLY EOF ;   
-
- method_decl:       (type | VOID)  ID PL (( PR block ) | (type ID ( VIRGULA type ID)* PR block ));
-		  
+ program:  CLASS PROGRAM LCURLY (field_decl)* (method_decl)* RCURLY EOF ;   
+  
  field_decl:        ( (ID (VIRGULA ID) ) | ( ID CL INT_LITERAL CR (VIRGULA ID CL INT_LITERAL CR ) ))* ;
 
- block:             LCURLY (var_decl)+ (statement)+ RCURLY ;
+ method_decl:       (TYPE | VOID)  ID PL (( PR block ) | (TYPE ID ( VIRGULA TYPE ID)* PR block ));
 
- var_decl:          type (ID (VIRGULA ID))* ;
+ block:             LCURLY (var_decl)+ (statement)+ RCURLY;
+
+ var_decl:          TYPE (ID (VIRGULA ID))* ;
 	
- type:           TYPES ;
-
-
+ 
  statement:        location ASSING_OP expr 
 		
  		|  method_call 
@@ -36,7 +34,7 @@
 	
 		| RETURN CL expr CR 
 
-		| BREAK
+		| BREAK   
 
 		| CONTINUE 
 	
