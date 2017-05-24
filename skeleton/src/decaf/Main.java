@@ -31,7 +31,10 @@ class Main {
 
 		        			switch (token.getType())
 		        			{
-							
+
+						case DecafLexer.PROGRAM:
+							type = "";
+							break;							
 		        			case DecafLexer.ID:
 		        				type = " IDENTIFIER";
 		        				break;
@@ -55,37 +58,35 @@ class Main {
 							break;
 						case DecafLexer.RESERVWORD:
 							type = " ";
-							break;
-						case DecafLexer.LCURLY:
-		        				type = " ";
-		        				break;
-						case DecafLexer.RCURLY:
-		        				type = " ";
-		        				break;	
-						case DecafLexer.SYMBOLS:
-		        				type = " ";
-		        				break;
-
-						case DecafLexer.PROGRAM:
+							break;					
 
 						case DecafLexer.CLASS:
-
+							type = "";
+							break;
 						case DecafLexer.TYPE:
-
+							type = "";
+							break;
 						case DecafLexer.CALLOUT:
-						
+						        type = "";
+							break;
 						case DecafLexer.ELSE:
-
+							type = "";
+							break;
 						case DecafLexer.FOR:
-
+							type = "";
+							break;
 						case DecafLexer.VOID:	
-
+							type = "";
+							break;
 						case DecafLexer.IF:
-						
+						        type = "";
+							break;
 						case DecafLexer.RETURN:
-
+							type = "";
+							break;
 						case DecafLexer.BREAK:
-
+							type = "";
+							break;
 						case DecafLexer.CONTINUE:
 							type = "";
 							break;

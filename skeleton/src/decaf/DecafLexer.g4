@@ -34,14 +34,13 @@ tokens
 
  BOOL_LITERAL: 'false' | 'true';
 
- CLASS: 'class';   PROGRAM: 'program';
+ CLASS: 'class';   PROGRAM: 'Program';
 
  FOR: 'for';  RETURN: 'return';  CONTINUE: 'continue';  IF: 'if'; ELSE: 'else'; BREAK: 'break'; CALLOUT: 'callout';
 
  BIN_OP:  (ARITH_OP) | (REL_OP) | (EQ_OP) | (COND_OP) ;
 
  RESERVWORD : (TYPE) | (BREAK) | CALLOUT | 'class'| (CONTINUE) | (ELSE) | (FOR) | (RETURN) | (IF) | (VOID) ;
-
 
  ARITH_OP:  (SMENOS) | (SMAIS) | '*' | '/' | '%' | '<<' | '>>' | '>>>' | (ASSING_OP) ;
 

@@ -15,9 +15,9 @@
 
  program:  CLASS PROGRAM LCURLY (field_decl)* (method_decl)* RCURLY EOF ;   
   
- field_decl:        ( (ID (VIRGULA ID) ) | ( ID CL INT_LITERAL CR (VIRGULA ID CL INT_LITERAL CR ) ))* ;
+ field_decl:        ( VIRGULA TYPE ID (VIRGULA TYPE ID)* | VIRGULA TYPE ID CL INT_LITERAL CR (VIRGULA ID CL INT_LITERAL CR )* ) VIRGULA;
 
- method_decl:       (TYPE | VOID)  ID PL (( PR block ) | (TYPE ID ( VIRGULA TYPE ID)* PR block ));
+ method_decl:       (TYPE | VOID)  ID PL ( PR block | TYPE ID ( VIRGULA TYPE ID)* PR block );
 
  block:             LCURLY (var_decl)+ (statement)+ RCURLY;
 
@@ -42,9 +42,9 @@
 	
 
 
- method_call:     method_name  PL (  (PR)  | ( (expr ( VIRGULA expr) )* PR )
+ method_call:     method_name  PL (  PR  |  (expr (VIRGULA expr)* )* PR )
 
-		| CALLOUT PL STRING_LITERAL ( (PR) | (( VIRGULA (callout_arg (VIRGULA callout_arg) )* )PR) ) ;
+		| CALLOUT PL STRING_LITERAL ( PR | VIRGULA callout_arg (VIRGULA callout_arg)*  PR ) ;
 
 
  method_name: 	  ID ;
