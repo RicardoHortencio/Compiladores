@@ -67,7 +67,8 @@ options
 
  ASSING_OP: 		 '/=' | '+='| '-=' | '*='; 
 
- ARITH_OP:  		(SMENOS) | (SMAIS) | '*' | '/' | '%' | ;
+ 
+//ARITH_OP:  		(SMENOS) | (SMAIS) | '*' | '/' | '%' | ;
 
 
  SYMBOLS: 		(VIRGULA) | '[' | ']' | '||' | '(' | ')' | (PONT_V) | '\'' ; 

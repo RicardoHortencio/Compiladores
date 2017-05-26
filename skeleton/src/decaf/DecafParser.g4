@@ -27,7 +27,7 @@
  var_decl:          TYPE ID (VIRGULA ID)* PONT_V ; 
 	
  
- statement:       location (IGUAL_OP|ASSIGNOP | SMAIS) expr PONT_V
+ statement:       location (IGUAL_OP|ASSING_OP | SMAIS) expr PONT_V
 		
  		|  method_call PONT_V
 
