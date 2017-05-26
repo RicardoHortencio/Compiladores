@@ -9,87 +9,97 @@ options
   language=Java;
 }
 
-tokens
-{
+//tokens
+//{
    
-  TK_class
+// TK_class
 
- }
+//}  
+ 	// ESPAÇOS EM BRANCO  E COMENTARIOS
+
+ WS_ : 			(' ' | '\n' | '\r' | '\t' ) -> skip;
 
 
- LCURLY : '{';       RCURLY : '}'; 
+ SL_COMMENT : 		'//' (~'\n')* '\n' -> skip;
+ 
 
- PL: '(';            PR: ')';
+ 	// PALAVRAS RESERVADAS
 
- VIRGULA:  ',';
+ 
+ PROGRAM: 			 'Program';
+ CLASS: 			 'class'; 
+ VOID:				 'void'; 
+ BOOL_LITERAL:			 'false' | 'true'; 
+ FOR:  				 'for';  
+ RETURN: 			 'return';  
+ CONTINUE: 			 'continue';  
+ IF:              		 'if'; 
+ ELSE: 				 'else';
+ BREAK: 			 'break';
+ CALLOUT: 	   	  	 'callout';
+ TYPE: 			  	 'boolean' | 'int';
 
- CL: '[';
- CR: ']';  
+ RESERVWORD : TYPE | BREAK | CALLOUT | CLASS | CONTINUE | ELSE | FOR | RETURN | IF | VOID | BOOL_LITERAL | CLASS | PROGRAM ;
 
- VOID: 'void'; 
+ 	// SIMBOLOS 
 
- SYMBOLS: (VIRGULA) | '[' | ']' | '||' | '(' | ')' | (PONT_V) | '\'' ; 
-
- PONT_V: ';' ;
-
- BOOL_LITERAL: 'false' | 'true';
-
- CLASS: 'class';   PROGRAM: 'Program';
-
- FOR: 'for';  RETURN: 'return';  CONTINUE: 'continue';  IF: 'if'; ELSE: 'else'; BREAK: 'break'; CALLOUT: 'callout';
-
- BIN_OP:  (ARITH_OP) | (REL_OP) | (EQ_OP) | (COND_OP) ;
-
- RESERVWORD : (TYPE) | (BREAK) | CALLOUT | 'class'| (CONTINUE) | (ELSE) | (FOR) | (RETURN) | (IF) | (VOID) ;
-
- ARITH_OP:  (SMENOS) | (SMAIS) | '*' | '/' | '%' | '<<' | '>>' | '>>>' | (ASSING_OP) ;
-
- SMENOS: '-'; SMAIS: '+';
-
- SAFIRMA: '!';
-
- REL_OP: '<' | '>' | '<=' | '>=';
-
- ASSING_OP: (IGUAL_OP) | '+='| '-=';
+ LCURLY : 			'{' ;
+ RCURLY : 			'}' ; 
+ PL: 				'(' ;          
+ PR: 				')' ;
+ PONT_V: 			';' ;
+ VIRGULA:  			',' ;
+ CL: 				'[' ;
+ CR: 				']' ;  
+ 
+ // OPERADORES
 
  IGUAL_OP: '=';
+ SMENOS: '-'; 
+ SMAIS: '+';
+ SAFIRMA: '!';
 
- EQ_OP:  '==' | '!=' ;
-
- COND_OP : '&&' | '||'  ;
+ REL_OP: 		'<' | '>' | '<=' | '>=';
  
- WS_ : (' ' | '\n' |'\t' ) -> skip;    // tratando caracter em si
-
- ID: ('a'..'z' | 'A'..'Z'|'_') ('a'..'z' | 'A'..'Z'|'_' | '0'..'9')* ; 
-
- SL_COMMENT : '//' (~'\n')* '\n' -> skip;
-
- ALPHA_NUM: (ALPHA) (DIGIT);
-
- ALPHA: ('a'..'z' | 'A'..'Z'|'_') ('a'..'z' | 'A'..'Z'|'_')*;
-
- HEX_DIGIT: '0x' [0-9a-fA-F]+;
+ EQ_OP:  		'==' | '!=' ;
  
- DIGIT:  ('0'..'9')+; 
+ COND_OP : 		'&&' | '||'  ;
 
- TYPE: 'boolean' | 'int' ;
+ ASSING_OP: 		 '/=' | '+='| '-=' | '*='; 
 
- INT_LITERAL: (DECIMAL_LITERAL)| (HEX_LITERAL);
- 
- DECIMAL_LITERAL: (DIGIT) (DIGIT)* ;
- 
- HEX_LITERAL: '0x' (HEX_DIGIT) (HEX_DIGIT)* ;
+ ARITH_OP:  		(SMENOS) | (SMAIS) | '*' | '/' | '%' | ;
+
+
+ SYMBOLS: 		(VIRGULA) | '[' | ']' | '||' | '(' | ')' | (PONT_V) | '\'' ; 
+
+ BIN_OP:  		'<=' | '!=' | '==' | '<' | '>' | '>=' |  '&&' | '||' | '+' | '*' | '/' | '%' ;
+
   
- CHAR_LITERAL: '\'' (ESC|~'\'') '\'';
- 
- STRING_LITERAL: '"'(ESC|~('"' | '\''))* '"'; 
- 
- CHAR: '\'' (ESC|~'\'') '\'';  	
- 
- fragment
- ESC :  '\\' ('n'|'\"'|'\\'|'t' | '\'');
+ 	// IDENTIFIER
+  
+ ID: ('_' | LETRAS)('_' |  LETRAS | DIGIT)* ;  
 
+ LETRAS: ('a'..'z'  | 'A'..'Z'); 
+ 
+ 
+	 //  NUMEROS
+ 
 
+ INT_LITERAL: 			DECIMAL_LITERAL | HEX_LITERAL;
+
+ HEX_LITERAL: 			'0x'(DIGIT | 'a'..'f' | 'A'..'F')+ ;
+
+ DECIMAL_LITERAL: 		DIGIT+;
+ 
+ DIGIT:  ('0'..'9');
+
+ STRING_LITERAL : 		'"'  ( CHAR | ESC )* '"' ;
+ CHAR_LITERAL : 		'\'' ( ESC  | CHAR ) '\'' ;
+ 
+ CHAR :	']'..'~' | '#'..'&' | '('..'[' | ' ' | '!'  ;
+
+ ESC : '\\' ( 'r' | 'n' | 't' | '\'' | '"' | '\\' ) ;
+ 
 
 
 

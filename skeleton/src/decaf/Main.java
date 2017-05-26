@@ -34,84 +34,64 @@ class Main {
 
 						case DecafLexer.PROGRAM:
 							type = "";
-							break;							
-		        			case DecafLexer.ID:
-		        				type = " IDENTIFIER";
-		        				break;
+							break;
 						case DecafLexer.CHAR_LITERAL:
 		        				type = " CHARLITERAL";
-		        				break;
-						case DecafLexer.HEX_DIGIT:
+		        				break;							
+		        									
+						case DecafLexer.INT_LITERAL:
 							type = " INTLITERAL";
-							break;
-						case DecafLexer.DIGIT:
-							type = " INTLITERAL";
-							break;
-						case DecafLexer.BIN_OP:
-							type = "";
-							break;
-						case DecafLexer.BOOL_LITERAL:
-							type = " BOOLEANLITERAL";
 							break;
 						case DecafLexer.STRING_LITERAL:
 							type = " STRINGLITERAL";
+							break;						
+						case DecafLexer.BIN_OP:
+							type = "";
 							break;
+						case DecafLexer.ID:
+		        				type = " IDENTIFIER";
+		        				break;
+											
 						case DecafLexer.RESERVWORD:
-							type = " ";
-							break;					
-
-						case DecafLexer.CLASS:
 							type = "";
-							break;
-						case DecafLexer.TYPE:
-							type = "";
-							break;
-						case DecafLexer.CALLOUT:
-						        type = "";
-							break;
-						case DecafLexer.ELSE:
-							type = "";
-							break;
-						case DecafLexer.FOR:
-							type = "";
-							break;
-						case DecafLexer.VOID:	
-							type = "";
-							break;
-						case DecafLexer.IF:
-						        type = "";
-							break;
-						case DecafLexer.RETURN:
-							type = "";
-							break;
-						case DecafLexer.BREAK:
-							type = "";
-							break;
-						case DecafLexer.CONTINUE:
-							type = "";
+							break;	
+						
+						case DecafLexer.BOOL_LITERAL:
+							type = " BOOLEANLITERAL";
 							break;
 						case DecafLexer.SYMBOLS:
-
+							type = "";
+							break;
 						case DecafLexer.LCURLY:
-
+							type = "";
+							break;
 						case DecafLexer.RCURLY:
-						
+							type = "";
+							break;						
 	 					case DecafLexer.PL:
-
+							type = "";
+							break;
 						case DecafLexer.PR:
-
+							type = "";
+							break;
 						case DecafLexer.CL:
-						
+							type = "";
+							break;						
 	 					case DecafLexer.CR:
-
+							type = "";
+							break;
 						case DecafLexer.SAFIRMA:
-
+							type = "";
+							break;
 						case DecafLexer.REL_OP:
-						
+							type = "";
+							break;						
 	 					case DecafLexer.ASSING_OP:
-
+							type = "";
+							break;
 						case DecafLexer.EQ_OP:
-
+							type = "";
+							break;
 						case DecafLexer.COND_OP:
 							type = "";
 							break;
