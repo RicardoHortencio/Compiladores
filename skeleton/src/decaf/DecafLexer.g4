@@ -43,10 +43,11 @@ options
 
  	// SIMBOLOS 
 
- LCURLY : 			'{' ;
- RCURLY : 			'}' ; 
+
  PL: 				'(' ;          
  PR: 				')' ;
+ LCURLY : 			'{' ;
+ RCURLY : 			'}' ; 
  PONT_V: 			';' ;
  VIRGULA:  			',' ;
  CL: 				'[' ;
@@ -56,7 +57,6 @@ options
 
  IGUAL_OP: '=';
  SMENOS: '-'; 
- SMAIS: '+';
  SAFIRMA: '!';
 
  REL_OP: 		'<' | '>' | '<=' | '>=';
