@@ -21,7 +21,7 @@ options
 
 
  SL_COMMENT : 		'//' (~'\n')* '\n' -> skip;
- 
+
 
  	// PALAVRAS RESERVADAS
 
@@ -44,6 +44,7 @@ options
  	// SIMBOLOS 
 
 
+
  PL: 				'(' ;          
  PR: 				')' ;
  LCURLY : 			'{' ;
@@ -54,6 +55,9 @@ options
  CR: 				']' ;  
  
  // OPERADORES
+
+ 
+ BINOP:  		'<=' | '!=' | '==' | '<' | '>' | '>=' |  '&&' | '||' | '+' | '*' | '/' | '%' ;
 
  IGUAL_OP: '=';
  SMENOS: '-'; 
@@ -73,7 +77,7 @@ options
 
  SYMBOLS: 		(VIRGULA) | '[' | ']' | '||' | '(' | ')' | (PONT_V) | '\'' ; 
 
- BIN_OP:  		'<=' | '!=' | '==' | '<' | '>' | '>=' |  '&&' | '||' | '+' | '*' | '/' | '%' ;
+ 
 
   
  	// IDENTIFIER

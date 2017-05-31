@@ -16,8 +16,8 @@
  program:  	     CLASS PROGRAM LCURLY (field_decl)* (method_decl)* RCURLY EOF ;
  
   
- field_decl:        ( TYPE ID (VIRGULA TYPE ID )*  PONT_V |  TYPE ID  CL INT_LITERAL CR (VIRGULA ID CL INT_LITERAL CR )* PONT_V );
-
+ field_decl:        ( TYPE ID (VIRGULA TYPE ID )?  PONT_V |  TYPE ID  CL INT_LITERAL CR (VIRGULA ID CL INT_LITERAL CR )? PONT_V );
+                 
  
  method_decl:       (TYPE | VOID)  ID PL (TYPE ID ( VIRGULA TYPE ID)*)? PR block ; 
       
@@ -35,7 +35,7 @@
 
 		|  IF PL expr PR block (ELSE block)?
 		
-		| FOR PL ID IGUAL_OP expr PONT_V  expr PONT_V block PR
+		| FOR  ID IGUAL_OP expr VIRGULA expr
 	
 		| RETURN  (expr)? PONT_V
 
@@ -63,7 +63,7 @@
  expr: 		    location
 		|   method_call
 		|   literal
-                |   expr (BIN_OP|SMENOS) expr
+                |   expr (BINOP|SMENOS) expr
 		|   SMENOS  expr
 		|   SAFIRMA expr
 		|   PL expr PR ;

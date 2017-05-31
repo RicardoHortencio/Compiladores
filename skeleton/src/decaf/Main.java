@@ -45,7 +45,7 @@ class Main {
 						case DecafLexer.STRING_LITERAL:
 							type = " STRINGLITERAL";
 							break;						
-						case DecafLexer.BIN_OP:
+						case DecafLexer.BINOP:
 							type = "";
 							break;
 						case DecafLexer.ID:
